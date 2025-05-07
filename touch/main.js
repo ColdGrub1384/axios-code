@@ -290,7 +290,7 @@ function setupEditor(editor) {
 
     }
 
-    const editorElement = document.getElementById('editor');
+    const editorElement = editor._domElement;
     let touchTimeout;
     let touchCount = 0;
     let startPosition;
