@@ -11,85 +11,7 @@ let leftSelector;
 let selectorMenu;
 let globalPoseMenu = 0;
 
-require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/vs' } });
-
-require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(document.getElementById('editor'), {
-        value: [
-            '// A simple JavaScript script to test touch event for monaco',
-            '',
-            'function greetUser(name) {',
-            '  console.log("Hello, " + name + "!");',
-            '}',
-            '',
-            'function factorial(n) {',
-            '  if (n === 0) {',
-            '    return 1;',
-            '  }',
-            '  return n * factorial(n - 1);',
-            '}',
-            '',
-            'function findMax(arr) {',
-            '  let max = arr[0];',
-            '  for (let i = 1; i < arr.length; i++) {',
-            '    if (arr[i] > max) {',
-            '      max = arr[i];',
-            '    }',
-            '  }',
-            '  return max;',
-            '}',
-            '',
-            'function reverseString(str) {',
-            '  return str.split("").reverse().join("");',
-            '}',
-            '',
-            'greetUser("Alice");',
-            'console.log("Factorial of 5:", factorial(5));',
-            'console.log("Max in [1, 2, 3, 4, 5]:", findMax([1, 2, 3, 4, 5]));',
-            'console.log("Reverse of \'JavaScript\':", reverseString("JavaScript"));',
-            '',
-            'let numbers = [1, 2, 3, 4, 5];',
-            'let doubled = numbers.map(function(num) {',
-            '  return num * 2;',
-            '});',
-            'console.log("Doubled numbers:", doubled);',
-            '',
-            'let person = {',
-            '  firstName: "John",',
-            '  lastName: "Doe",',
-            '  age: 30,',
-            '  fullName: function() {',
-            '    return this.firstName + " " + this.lastName;',
-            '  }',
-            '};',
-            'console.log("Person\'s full name:", person.fullName());',
-            '',
-            'function fetchData(url) {',
-            '  return new Promise((resolve, reject) => {',
-            '    setTimeout(() => {',
-            '      resolve("Data from " + url);',
-            '    }, 1000);',
-            '  });',
-            '}',
-            '',
-            'fetchData("https://api.example.com").then(data => {',
-            '  console.log(data);',
-            '}).catch(error => {',
-            '  console.error("Error fetching data:", error);',
-            '});'
-        ].join('\n'),
-        language: 'javascript',
-        theme: 'vs-dark',
-        minimap: { enabled: false },
-        wordWrap: 'off',
-        lineDecorationsWidth: 0,
-        lineNumbersMinChars: 3,
-        lineNumbers: 'on',
-        tabSize: 2,
-        contextmenu: false
-    });
-
-
+function setupEditor(editor) {
     function undo() {
         editor.trigger('keyboard', 'undo', null);
     }
@@ -519,4 +441,4 @@ require(['vs/editor/editor.main'], function () {
     editorElement.addEventListener('click', (event) => {
         event.stopPropagation();
     });
-});
+}
